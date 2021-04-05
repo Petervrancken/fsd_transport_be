@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56988439-d77a-442a-ab50-7afad2a2fbaf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fsd-transport-be.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fsd-transport-be.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210405145533.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210405150439.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Categorie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Categorie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tarief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tarief.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Veroersmiddel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Veroersmiddel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Verplaatsing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Verplaatsing.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +154,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617626898465</updated>
       <workItem from="1617626899516" duration="1364000" />
-      <workItem from="1617628426146" duration="4361000" />
+      <workItem from="1617628426146" duration="6624000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1617627261899</created>
@@ -164,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617627261899</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="entity ready">
+      <created>1617633234185</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1617633234185</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,21 +178,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="entity ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="entity ready" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="357" y="0" key="CommitChangelistDialog2" timestamp="1617627261124">
+    <state x="357" y="0" key="CommitChangelistDialog2" timestamp="1617633233422">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="357" y="0" key="CommitChangelistDialog2/0.0.1536.824/-324.-1440.2560.1400@0.0.1536.824" timestamp="1617627261124" />
+    <state x="357" y="0" key="CommitChangelistDialog2/0.0.1536.824/-324.-1440.2560.1400@0.0.1536.824" timestamp="1617633233422" />
     <state x="549" y="154" key="FileChooserDialogImpl" timestamp="1617628356894">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="154" key="FileChooserDialogImpl/0.0.1536.824/-324.-1440.2560.1400@0.0.1536.824" timestamp="1617628356894" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1617627491365">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1617633243321">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/-324.-1440.2560.1400@0.0.1536.824" timestamp="1617627491365" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824/-324.-1440.2560.1400@0.0.1536.824" timestamp="1617633243321" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1617629203840">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -29,6 +29,12 @@ class Tarief
      */
     private $datum;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Veroersmiddel::class, inversedBy="tarief")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $veroersmiddel;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +60,18 @@ class Tarief
     public function setDatum(\DateTimeInterface $datum): self
     {
         $this->datum = $datum;
+
+        return $this;
+    }
+
+    public function getVeroersmiddel(): ?Veroersmiddel
+    {
+        return $this->veroersmiddel;
+    }
+
+    public function setVeroersmiddel(?Veroersmiddel $veroersmiddel): self
+    {
+        $this->veroersmiddel = $veroersmiddel;
 
         return $this;
     }

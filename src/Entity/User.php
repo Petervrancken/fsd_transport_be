@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -55,6 +57,22 @@ class User implements UserInterface
      * @ORM\Column(type="smallint")
      */
     private $admin;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Verplaatsing::class, mappedBy="user")
+     */
+    private $verplaatsing;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Veroersmiddel::class, mappedBy="user")
+     */
+    private $vervoersmiddel;
+
+    public function __construct()
+    {
+        $this->verplaatsing = new ArrayCollection();
+        $this->vervoersmiddel = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -181,6 +199,66 @@ class User implements UserInterface
     public function setAdmin(int $admin): self
     {
         $this->admin = $admin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Verplaatsing[]
+     */
+    public function getVerplaatsing(): Collection
+    {
+        return $this->verplaatsing;
+    }
+
+    public function addVerplaatsing(Verplaatsing $verplaatsing): self
+    {
+        if (!$this->verplaatsing->contains($verplaatsing)) {
+            $this->verplaatsing[] = $verplaatsing;
+            $verplaatsing->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVerplaatsing(Verplaatsing $verplaatsing): self
+    {
+        if ($this->verplaatsing->removeElement($verplaatsing)) {
+            // set the owning side to null (unless already changed)
+            if ($verplaatsing->getUser() === $this) {
+                $verplaatsing->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Veroersmiddel[]
+     */
+    public function getVervoersmiddel(): Collection
+    {
+        return $this->vervoersmiddel;
+    }
+
+    public function addVervoersmiddel(Veroersmiddel $vervoersmiddel): self
+    {
+        if (!$this->vervoersmiddel->contains($vervoersmiddel)) {
+            $this->vervoersmiddel[] = $vervoersmiddel;
+            $vervoersmiddel->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVervoersmiddel(Veroersmiddel $vervoersmiddel): self
+    {
+        if ($this->vervoersmiddel->removeElement($vervoersmiddel)) {
+            // set the owning side to null (unless already changed)
+            if ($vervoersmiddel->getUser() === $this) {
+                $vervoersmiddel->setUser(null);
+            }
+        }
 
         return $this;
     }

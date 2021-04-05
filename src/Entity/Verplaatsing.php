@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\VerplaatsingRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,6 +45,22 @@ class Verplaatsing
      * @ORM\Column(type="string", length=255)
      */
     private $loc_stop;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Veroersmiddel::class, mappedBy="verplaatsing")
+     */
+    private $veroersmiddels;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="verplaatsing")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    public function __construct()
+    {
+        $this->veroersmiddels = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +123,45 @@ class Verplaatsing
     public function setLocStop(string $loc_stop): self
     {
         $this->loc_stop = $loc_stop;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Veroersmiddel[]
+     */
+    public function getVeroersmiddels(): Collection
+    {
+        return $this->veroersmiddels;
+    }
+
+    public function addVeroersmiddel(Veroersmiddel $veroersmiddel): self
+    {
+        if (!$this->veroersmiddels->contains($veroersmiddel)) {
+            $this->veroersmiddels[] = $veroersmiddel;
+            $veroersmiddel->addVerplaatsing($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVeroersmiddel(Veroersmiddel $veroersmiddel): self
+    {
+        if ($this->veroersmiddels->removeElement($veroersmiddel)) {
+            $veroersmiddel->removeVerplaatsing($this);
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
