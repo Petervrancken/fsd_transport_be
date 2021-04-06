@@ -18,7 +18,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     normalizationContext={"groups"={"user:read"}},
  *     denormalizationContext={"groups"={"user:write"}}
  * )
- * @UniqueEntity(fields={"username"})
  * @UniqueEntity(fields={"email"})
  */
 class User implements UserInterface
@@ -76,7 +75,7 @@ class User implements UserInterface
      * @Groups({"user:read"})
      * @Assert\NotBlank()
      */
-    private $admin;
+    private $admin = 2;
 
     /**
      * @ORM\OneToMany(targetEntity=Verplaatsing::class, mappedBy="user")

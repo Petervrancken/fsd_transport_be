@@ -7,11 +7,12 @@ use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"user:read"}},
- *     denormalizationContext={"groups"={"user:write"}}
+ *     normalizationContext={"groups"={"categorie:read"}},
+ *     denormalizationContext={"groups"={"categorie:write"}}
  * )
  * @ORM\Entity(repositoryClass=CategorieRepository::class)
  */
@@ -26,11 +27,13 @@ class Categorie
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"categorie:read", "categorie:write"})
      */
     private $naam;
 
     /**
      * @ORM\OneToMany(targetEntity=Vervoersmiddel::class, mappedBy="categorie")
+     * @Groups({"categorie:read"})
      */
     private $vervoersmiddelen;
 

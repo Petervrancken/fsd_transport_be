@@ -7,9 +7,13 @@ use App\Repository\VervoersmiddelRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"vervoersmiddel:read"}},
+ *     denormalizationContext={"groups"={"vervoersmiddel:write"}}
+ * )
  * @ORM\Entity(repositoryClass=VervoersmiddelRepository::class)
  */
 class Vervoersmiddel
@@ -23,28 +27,33 @@ class Vervoersmiddel
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"vervoersmiddel:read", "vervoersmiddel:write"})
      */
     private $naam;
 
     /**
      * @ORM\OneToMany(targetEntity=Verplaatsing::class, mappedBy="vervoersmiddel")
+     * @Groups({"vervoersmiddel:read"})
      */
     private $verplaatsingen;
 
     /**
      * @ORM\OneToMany(targetEntity=Tarief::class, mappedBy="vervoersmiddel")
+     * @Groups({"vervoersmiddel:read"})
      */
     private $tarieven;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="vervoersmiddelen")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"vervoersmiddel:read", "vervoersmiddel:write"})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="vervoersmiddelen")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"vervoersmiddel:read", "vervoersmiddel:write"})
      */
     private $categorie;
 
