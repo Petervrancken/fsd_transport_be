@@ -5,9 +5,13 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\VerplaatsingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"verplaatsing:read"}},
+ *     denormalizationContext={"groups"={"verplaatsing:write"}},
+ * )
  * @ORM\Entity(repositoryClass=VerplaatsingRepository::class)
  */
 class Verplaatsing
@@ -21,38 +25,45 @@ class Verplaatsing
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"verplaatsing:read", "verplaatsing:write", "vervoersmiddel:item:get"})
      */
     private $datum;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"verplaatsing:read", "verplaatsing:write"})
      */
     private $km_start;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"verplaatsing:read", "verplaatsing:write"})
      */
     private $km_stop;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"verplaatsing:read", "verplaatsing:write", "vervoersmiddel:item:get"})
      */
     private $loc_start;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"verplaatsing:read", "verplaatsing:write", "vervoersmiddel:item:get"})
      */
     private $loc_stop;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="verplaatsingen")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"verplaatsing:read", "verplaatsing:write"})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Vervoersmiddel::class, inversedBy="verplaatsingen")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"verplaatsing:read", "verplaatsing:write"})
      */
     private $vervoersmiddel;
 

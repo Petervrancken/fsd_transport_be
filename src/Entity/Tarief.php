@@ -5,9 +5,13 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TariefRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"tarief:read"}},
+ *     denormalizationContext={"groups"={"tarief:write"}},
+ * )
  * @ORM\Entity(repositoryClass=TariefRepository::class)
  */
 class Tarief
@@ -21,11 +25,13 @@ class Tarief
 
     /**
      * @ORM\Column(type="float")
+     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:read"})
      */
     private $prijs;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"tarief:read", "tarief:write"})
      */
     private $datum;
 

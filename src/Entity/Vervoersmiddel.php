@@ -11,8 +11,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     collectionOperations={"get","post"},
+ *     itemOperations={
+ *          "get"={
+ *              "normalization_context"={"groups"={"vervoersmiddel:read", "vervoersmiddel:item:get"}}
+ *     },
+ *          "put"
+ *     },
  *     normalizationContext={"groups"={"vervoersmiddel:read"}},
- *     denormalizationContext={"groups"={"vervoersmiddel:write"}}
+ *     denormalizationContext={"groups"={"vervoersmiddel:write"}},
  * )
  * @ORM\Entity(repositoryClass=VervoersmiddelRepository::class)
  */
@@ -27,7 +34,7 @@ class Vervoersmiddel
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"vervoersmiddel:read", "vervoersmiddel:write"})
+     * @Groups({"vervoersmiddel:read", "vervoersmiddel:write", "verplaatsing:read"})
      */
     private $naam;
 
