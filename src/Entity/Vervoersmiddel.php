@@ -40,7 +40,6 @@ class Vervoersmiddel
 
     /**
      * @ORM\OneToMany(targetEntity=Verplaatsing::class, mappedBy="vervoersmiddel")
-     * @Groups({"vervoersmiddel:read"})
      */
     private $verplaatsingen;
 
@@ -52,13 +51,14 @@ class Vervoersmiddel
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="vervoersmiddelen")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"vervoersmiddel:write"})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="vervoersmiddelen")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"vervoersmiddel:read", "vervoersmiddel:write"})
+     * @Groups({"vervoersmiddel:write"})
      */
     private $categorie;
 

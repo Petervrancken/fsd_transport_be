@@ -38,6 +38,7 @@ class Tarief
     /**
      * @ORM\ManyToOne(targetEntity=Vervoersmiddel::class, inversedBy="tarieven")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"tarief:read", "tarief:write"})
      */
     private $vervoersmiddel;
 

@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"verplaatsing:read"}},
- *     denormalizationContext={"groups"={"verplaatsing:write"}},
+ *     denormalizationContext={"groups"={"verplaatsing:write"}}
  * )
  * @ORM\Entity(repositoryClass=VerplaatsingRepository::class)
  */
@@ -33,25 +33,25 @@ class Verplaatsing
      * @ORM\Column(type="integer")
      * @Groups({"verplaatsing:read", "verplaatsing:write"})
      */
-    private $km_start;
+    private $kmStart;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"verplaatsing:read", "verplaatsing:write"})
      */
-    private $km_stop;
+    private $kmStop;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"verplaatsing:read", "verplaatsing:write", "vervoersmiddel:item:get"})
      */
-    private $loc_start;
+    private $locStart;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"verplaatsing:read", "verplaatsing:write", "vervoersmiddel:item:get"})
      */
-    private $loc_stop;
+    private $locStop;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="verplaatsingen")
@@ -86,48 +86,48 @@ class Verplaatsing
 
     public function getKmStart(): ?int
     {
-        return $this->km_start;
+        return $this->kmStart;
     }
 
-    public function setKmStart(int $km_start): self
+    public function setKmStart(int $kmStart): self
     {
-        $this->km_start = $km_start;
+        $this->kmStart = $kmStart;
 
         return $this;
     }
 
     public function getKmStop(): ?int
     {
-        return $this->km_stop;
+        return $this->kmStop;
     }
 
-    public function setKmStop(int $km_stop): self
+    public function setKmStop(int $kmStop): self
     {
-        $this->km_stop = $km_stop;
+        $this->kmStop = $kmStop;
 
         return $this;
     }
 
     public function getLocStart(): ?string
     {
-        return $this->loc_start;
+        return $this->locStart;
     }
 
-    public function setLocStart(string $loc_start): self
+    public function setLocStart(string $locStart): self
     {
-        $this->loc_start = $loc_start;
+        $this->locStart = $locStart;
 
         return $this;
     }
 
     public function getLocStop(): ?string
     {
-        return $this->loc_stop;
+        return $this->locStop;
     }
 
-    public function setLocStop(string $loc_stop): self
+    public function setLocStop(string $locStop): self
     {
-        $this->loc_stop = $loc_stop;
+        $this->locStop = $locStop;
 
         return $this;
     }

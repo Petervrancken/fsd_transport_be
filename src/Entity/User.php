@@ -20,7 +20,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @UniqueEntity(fields={"email"})
  */
-class User implements UserInterface
+
+// userinterface iets met wachtwoorden kan geimplementeerd worden
+
+class User
 {
     /**
      * @ORM\Id
@@ -37,11 +40,13 @@ class User implements UserInterface
      */
     private $email;
 
+    /*
     /**
      * @ORM\Column(type="json")
      *
-     */
+     *
     private $roles = [];
+    */
 
     /**
      * @var string The hashed password
@@ -120,9 +125,9 @@ class User implements UserInterface
         return (string) $this->email;
     }
 
-    /**
+    /*
      * @see UserInterface
-     */
+     *
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -138,6 +143,7 @@ class User implements UserInterface
 
         return $this;
     }
+    */
 
     /**
      * @see UserInterface

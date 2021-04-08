@@ -33,7 +33,6 @@ class Categorie
 
     /**
      * @ORM\OneToMany(targetEntity=Vervoersmiddel::class, mappedBy="categorie")
-     * @Groups({"categorie:read"})
      */
     private $vervoersmiddelen;
 
