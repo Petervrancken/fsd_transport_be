@@ -46,14 +46,12 @@ class Vervoersmiddel
 
     /**
      * @ORM\OneToMany(targetEntity=Tarief::class, mappedBy="vervoersmiddel")
-     * @Groups({"vervoersmiddel:read"})
      */
     private $tarieven;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="vervoersmiddelen")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"vervoersmiddel:read", "vervoersmiddel:write"})
      */
     private $user;
 
