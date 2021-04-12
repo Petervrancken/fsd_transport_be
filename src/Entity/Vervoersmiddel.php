@@ -45,6 +45,7 @@ class Vervoersmiddel
 
     /**
      * @ORM\OneToMany(targetEntity=Tarief::class, mappedBy="vervoersmiddel")
+     * @Groups ({"verplaatsing:read"})
      */
     private $tarieven;
 
