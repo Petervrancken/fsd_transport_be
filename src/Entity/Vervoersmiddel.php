@@ -29,6 +29,7 @@ class Vervoersmiddel
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"vervoersmiddel:read"})
      */
     private $id;
 

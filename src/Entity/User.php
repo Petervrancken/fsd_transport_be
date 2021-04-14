@@ -92,6 +92,12 @@ class User
      */
     private $vervoersmiddelen;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"user:read", "user:write"})
+     */
+    private $Functie;
+
     public function __construct()
     {
         $this->verplaatsingen = new ArrayCollection();
@@ -284,6 +290,18 @@ class User
                 $vervoersmiddelen->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFunctie(): ?string
+    {
+        return $this->Functie;
+    }
+
+    public function setFunctie(?string $Functie): self
+    {
+        $this->Functie = $Functie;
 
         return $this;
     }
