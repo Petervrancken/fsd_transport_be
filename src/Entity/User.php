@@ -23,7 +23,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 // userinterface iets met wachtwoorden kan geimplementeerd worden
 
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -131,25 +131,29 @@ class User
         return (string) $this->email;
     }
 
-    /*
+    /**
      * @see UserInterface
-     *
+     */
     public function getRoles(): array
     {
+        /*
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return array_unique($roles);*/
+        
+        return [];
     }
 
     public function setRoles(array $roles): self
     {
+        /*
         $this->roles = $roles;
 
-        return $this;
+        return $this;*/
     }
-    */
+
 
     /**
      * @see UserInterface
@@ -161,7 +165,7 @@ class User
 
     public function setPassword(string $password): self
     {
-        $this->password = password_hash( $password, PASSWORD_BCRYPT );
+        $this->password = $password;
 
         return $this;
     }

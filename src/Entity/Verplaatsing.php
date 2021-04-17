@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\VerplaatsingRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 
 /**
  * @ApiResource(
@@ -13,6 +16,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     denormalizationContext={"groups"={"verplaatsing:write"}}
  * )
  * @ORM\Entity(repositoryClass=VerplaatsingRepository::class)
+ * @ApiFilter(RangeFilter::class, properties={"datum"})
+ * @ApiFilter(OrderFilter::class, properties={"datum"})
  */
 class Verplaatsing
 {
