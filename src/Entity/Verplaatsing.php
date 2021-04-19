@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 
 /**
  * @ApiResource(
@@ -18,6 +20,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
  * @ORM\Entity(repositoryClass=VerplaatsingRepository::class)
  * @ApiFilter(RangeFilter::class, properties={"datum"})
  * @ApiFilter(OrderFilter::class, properties={"datum"})
+ * @ApiFilter(SearchFilter::class, properties={"user.id": "partial"})
+ * @ApiFilter(BooleanFilter::class, properties={"vervoersmiddel.tarieven.published"})
  */
 class Verplaatsing
 {

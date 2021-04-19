@@ -2,10 +2,15 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TariefRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
+
+
 
 /**
  * @ApiResource(
@@ -13,6 +18,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     denormalizationContext={"groups"={"tarief:write"}},
  * )
  * @ORM\Entity(repositoryClass=TariefRepository::class)
+ * @ApiFilter(BooleanFilter::class, properties={"published"})
+ * @ApiFilter(PropertyFilter::class)
  */
 class Tarief
 {
@@ -41,6 +48,11 @@ class Tarief
      * @Groups({"tarief:read", "tarief:write"})
      */
     private $vervoersmiddel;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $published;
 
     public function getId(): ?int
     {
@@ -79,6 +91,18 @@ class Tarief
     public function setVervoersmiddel(?Vervoersmiddel $vervoersmiddel): self
     {
         $this->vervoersmiddel = $vervoersmiddel;
+
+        return $this;
+    }
+
+    public function getPublished(): ?bool
+    {
+        return $this->published;
+    }
+
+    public function setPublished(bool $published): self
+    {
+        $this->published = $published;
 
         return $this;
     }
