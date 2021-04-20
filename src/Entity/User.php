@@ -35,8 +35,12 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups({"user:read", "user:write"})
-     * @Assert\NotBlank()
-     * @Assert\Email()
+     * @Assert\NotBlank(
+     *     message="Verplicht in te vullen"
+     * )
+     * @Assert\Email(
+     *     message="Geen geldig e-mail adres"
+     * )
      */
     private $email;
 
@@ -52,20 +56,30 @@ class User implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Groups({"user:write"})
+     * @Assert\Length(
+     *     min=7,
+     *
+     *     minMessage="Wachtwoord moet minstens 6 tekens bevatten",
+     *
+     * )
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write", "vervoersmiddel:read", "verplaatsing:read"})
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message="Veld verplicht invulLen"
+     * )
      */
     private $naam;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write", "vervoersmiddel:read", "verplaatsing:read"})
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(
+     *     message="Veld verplicht invullen"
+     * )
      */
     private $voornaam;
 
@@ -84,17 +98,26 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Verplaatsing::class, mappedBy="user")
+     * @Assert\NotBlank(
+     *   message="Veld verplicht invullen"
+     *  )
      */
     private $verplaatsingen;
 
     /**
      * @ORM\OneToMany(targetEntity=Vervoersmiddel::class, mappedBy="user")
+     * @Assert\NotBlank(
+     *   message="Voer voertuig in"
+     * )
      */
     private $vervoersmiddelen;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"user:read", "user:write"})
+     * @Assert\NotBlank (
+     *     message="Verplicht in te vullen"
+     * )
      */
     private $Functie;
 
