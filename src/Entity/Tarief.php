@@ -32,25 +32,26 @@ class Tarief
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:read", "verplaatsing:read"})
+     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:read", "verplaatsing:read", "vervoersmiddel:write"})
      */
     private $prijs;
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"tarief:read", "tarief:write"})
+     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:write"})
      */
     private $datum;
 
     /**
      * @ORM\ManyToOne(targetEntity=Vervoersmiddel::class, inversedBy="tarieven")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"tarief:read", "tarief:write"})
+     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:write"})
      */
     private $vervoersmiddel;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"vervoersmiddel:write", "verplaatsing:read"})
      */
     private $published;
 

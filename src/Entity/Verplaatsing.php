@@ -17,6 +17,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
  *     normalizationContext={"groups"={"verplaatsing:read"}},
  *     denormalizationContext={"groups"={"verplaatsing:write"}}
  * )
+ *
  * @ORM\Entity(repositoryClass=VerplaatsingRepository::class)
  * @ApiFilter(RangeFilter::class, properties={"datum"})
  * @ApiFilter(OrderFilter::class, properties={"datum"})

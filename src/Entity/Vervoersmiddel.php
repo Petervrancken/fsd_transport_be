@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -45,8 +46,8 @@ class Vervoersmiddel
     private $verplaatsingen;
 
     /**
-     * @ORM\OneToMany(targetEntity=Tarief::class, mappedBy="vervoersmiddel")
-     * @Groups ({"verplaatsing:read"})
+     * @ORM\OneToMany(targetEntity=Tarief::class, mappedBy="vervoersmiddel", cascade={"persist"} )
+     * @Groups ({"verplaatsing:read","vervoersmiddel:write"})
      */
     private $tarieven;
 
@@ -54,6 +55,7 @@ class Vervoersmiddel
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="vervoersmiddelen")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"vervoersmiddel:write"})
+     * @Assert\Valid()
      */
     private $user;
 
