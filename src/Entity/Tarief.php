@@ -32,7 +32,7 @@ class Tarief
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:read", "verplaatsing:read", "vervoersmiddel:write"})
+     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:read", "verplaatsing:read", "vervoersmiddel:write", "vervoersmiddel:read"})
      */
     private $prijs;
 

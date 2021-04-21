@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="56988439-d77a-442a-ab50-7afad2a2fbaf" name="Default Changelist" comment="api 1.55">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tarief.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tarief.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Vervoersmiddel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Vervoersmiddel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

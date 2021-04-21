@@ -29,6 +29,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"vervoersmiddel:read"})
      */
     private $id;
 
@@ -67,7 +68,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user:read", "user:write", "vervoersmiddel:read", "verplaatsing:read"})
+     * @Groups({"user:read", "user:write", "verplaatsing:read"})
      * @Assert\NotBlank(
      *     message="Veld verplicht invulLen"
      * )
@@ -76,7 +77,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user:read", "user:write", "vervoersmiddel:read", "verplaatsing:read"})
+     * @Groups({"user:read", "user:write", "verplaatsing:read"})
      * @Assert\NotBlank(
      *     message="Veld verplicht invullen"
      * )

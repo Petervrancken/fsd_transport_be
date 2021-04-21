@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\VervoersmiddelRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,6 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource(
@@ -23,6 +25,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     denormalizationContext={"groups"={"vervoersmiddel:write"}},
  * )
  * @ORM\Entity(repositoryClass=VervoersmiddelRepository::class)
+ * @ApiFilter(SearchFilter::class, properties={"user.id": "partial"})
  */
 class Vervoersmiddel
 {
@@ -47,14 +50,14 @@ class Vervoersmiddel
 
     /**
      * @ORM\OneToMany(targetEntity=Tarief::class, mappedBy="vervoersmiddel", cascade={"persist"} )
-     * @Groups ({"verplaatsing:read","vervoersmiddel:write"})
+     * @Groups ({"verplaatsing:read","vervoersmiddel:write", "vervoersmiddel:read"})
      */
     private $tarieven;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="vervoersmiddelen")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"vervoersmiddel:write"})
+     * @Groups({"vervoersmiddel:write", "vervoersmiddel:read"})
      * @Assert\Valid()
      */
     private $user;
