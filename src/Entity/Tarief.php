@@ -38,7 +38,7 @@ class Tarief
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:write"})
+     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:write", "vervoersmiddel:read"})
      */
     private $datum;
 
