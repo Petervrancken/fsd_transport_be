@@ -11,6 +11,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\RangeFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -37,30 +38,45 @@ class Verplaatsing
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"verplaatsing:read", "verplaatsing:write", "vervoersmiddel:item:get"})
+     * @Assert\NotBlank(
+     *    message="Verplicht in te vullen"
+     * )
      */
     private $datum;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"verplaatsing:read", "verplaatsing:write"})
+     * @Assert\NotBlank (
+     *     message="Verplicht in te vullen"
+     * )
      */
     private $kmStart;
 
     /**
      * @ORM\Column(type="integer")
      * @Groups({"verplaatsing:read", "verplaatsing:write"})
+     * @Assert\NotBlank (
+     *     message="Verplicht in te vullen"
+     * )
      */
     private $kmStop;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"verplaatsing:read", "verplaatsing:write", "vervoersmiddel:item:get"})
+     * @Assert\NotBlank (
+     *     message="Verplicht in te vullen"
+     * )
      */
     private $locStart;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"verplaatsing:read", "verplaatsing:write", "vervoersmiddel:item:get"})
+     * @Assert\NotBlank (
+     *     message="Verplicht in te vullen"
+     * )
      */
     private $locStop;
 
@@ -72,9 +88,11 @@ class Verplaatsing
     private $user;
 
     /**
+     * iri="vervoersmiddels"
      * @ORM\ManyToOne(targetEntity=Vervoersmiddel::class, inversedBy="verplaatsingen")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"verplaatsing:read", "verplaatsing:write"})
+     *
      */
     private $vervoersmiddel;
 
