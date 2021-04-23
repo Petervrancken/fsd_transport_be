@@ -25,7 +25,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *     denormalizationContext={"groups"={"vervoersmiddel:write"}},
  * )
  * @ORM\Entity(repositoryClass=VervoersmiddelRepository::class)
- * @ApiFilter(SearchFilter::class, properties={"user.id": "partial"})
+ * @ApiFilter(SearchFilter::class, properties={"user.id": "exact"})
  */
 class Vervoersmiddel
 {

@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 
 
@@ -20,6 +21,7 @@ use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
  * @ORM\Entity(repositoryClass=TariefRepository::class)
  * @ApiFilter(BooleanFilter::class, properties={"published"})
  * @ApiFilter(PropertyFilter::class)
+ * @ApiFilter(SearchFilter::class, properties={"vervoersmiddel.id": "exact"})
  */
 class Tarief
 {
@@ -27,12 +29,13 @@ class Tarief
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"tarief:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:read", "verplaatsing:read", "vervoersmiddel:write", "vervoersmiddel:read"})
+     * @Groups({"tarief:read", "tarief:write", "vervoersmiddel:read", "verplaatsing:read", "vervoersmiddel:write"})
      */
     private $prijs;
 
